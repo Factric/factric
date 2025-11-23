@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Harbinger Log">
+  <meta name="theme-color" content="#3b82f6">
+  <title>Harbinger of Death: Workout Log (Advanced)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Google Sheets API -->
+  <script src="https://apis.google.com/js/api.js"></script>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+</head>
+
+<body class="min-h-screen h-screen overflow-hidden flex flex-col">
+
+
+  <main class="p-2 sm:p-3 max-w-5xl mx-auto w-full flex-1 overflow-y-auto hide-scrollbar"
+    style="overflow-x: hidden; padding-bottom: 20px;">
+
+    <!-- Tabs Container -->
+    <div id="content-container" class="relative flex-1">
+      <div class="tab active" id="home" data-index="0"></div>
+      <div class="tab" id="pushups" data-index="1"></div>
+      <div class="tab" id="pullups" data-index="2"></div>
+      <div class="tab" id="legs" data-index="3"></div>
+      <div class="tab" id="abs" data-index="4"></div>
+      <div class="tab" id="kicks" data-index="5"></div>
+      <div class="tab" id="advancements" data-index="6"></div>
+      <div class="tab" id="bodystats" data-index="7"></div>
+      <div class="tab" id="grand-total" data-index="8"></div>
+      <div class="tab" id="ranking" data-index="9"></div>
+      <div class="tab" id="settings" data-index="10"></div>
+    </div>
+
+    <div id="custom-modal-container"></div>
+    <!-- End Custom Modal Placeholder -->
+
+    <footer class="fixed bottom-0 left-0 right-0 border-t shadow-2xl z-40"
+      style="background: var(--color-bg-card); border-color: var(--color-border); overflow-x: hidden;">
+      <div class="flex justify-around max-w-5xl mx-auto" style="overflow-x: hidden;">
+        <button
+          class="nav-item active flex flex-col items-center py-3 px-2 text-xs text-gray-400 transition-colors duration-200"
+          data-page="home"><i class="fas fa-house-chimney text-xl"></i><span class="mt-1">Home</span></button>
+        <!-- NEW HOME BUTTON - Set active by default -->
+        <button
+          class="nav-item flex flex-col items-center py-3 px-2 text-xs text-gray-400 transition-colors duration-200"
+          data-page="pushups"><i class="fas fa-hand-fist text-xl"></i><span class="mt-1">Pushups</span></button>
+        <button
+          class="nav-item flex flex-col items-center py-3 px-2 text-xs text-gray-400 transition-colors duration-200"
+          data-page="pullups"><i class="fas fa-hand-rock text-xl"></i><span class="mt-1">Pullups</span></button>
+        <button
+          class="nav-item flex flex-col items-center py-3 px-2 text-xs text-gray-400 transition-colors duration-200"
+          data-page="legs"><i class="fas fa-shoe-prints text-xl"></i><span class="mt-1">Legs</span></button>
+        <button
+          class="nav-item flex flex-col items-center py-3 px-2 text-xs text-gray-400 transition-colors duration-200"
+          data-page="abs"><i class="fas fa-dumbbell text-xl"></i><span class="mt-1">Abs</span></button>
+        <button
+          class="nav-item flex flex-col items-center py-3 px-2 text-xs text-gray-400 transition-colors duration-200"
+          data-page="kicks"><i class="fas fa-walking text-xl"></i><span class="mt-1">Kicks</span></button>
+        <button
+          class="nav-item flex flex-col items-center py-3 px-2 text-xs text-gray-400 transition-colors duration-200"
+          data-page="advancements"><i class="fas fa-medal text-xl"></i><span class="mt-1">Advance</span></button>
+        <button
+          class="nav-item flex flex-col items-center py-3 px-2 text-xs text-gray-400 transition-colors duration-200"
+          data-page="bodystats"><i class="fas fa-heart-pulse text-xl"></i><span class="mt-1">Stats</span></button>
+        <button
+          class="nav-item flex flex-col items-center py-3 px-2 text-xs text-gray-400 transition-colors duration-200"
+          data-page="grand-total"><i class="fas fa-chart-pie text-xl"></i><span class="mt-1">Overview</span></button>
+        <button
+          class="nav-item flex flex-col items-center py-3 px-2 text-xs text-gray-400 transition-colors duration-200"
+          data-page="ranking"><i class="fas fa-chart-line text-xl"></i><span class="mt-1">Rank</span></button>
+        <button
+          class="nav-item flex flex-col items-center py-3 px-2 text-xs text-gray-400 transition-colors duration-200"
+          data-page="settings"><i class="fas fa-gear text-xl"></i><span class="mt-1">Settings</span></button>
+      </div>
+      <div class="text-xs text-center text-gray-500 py-1">
+      </div>
+    </footer>
+
+    <script>
+      // ALL DATA IS SAVED HERE - Copy this file to backup all progress!
+      const EMBEDDED_DATA = { "logData": null, "settings": null, "completedDifficulties": {}, "advancementBaselines": {} };
+    </script>
+    <script type="module" src="script.js"></script>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>
